@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-
-class ShopItem {
-  final String name;
-  final IconData icon;
-  final Color color;
-
-  ShopItem(this.name, this.icon, this.color);
-}
+import 'package:mind_archives_mobile/screens/shoplist_form.dart';
+import 'package:mind_archives_mobile/widgets/left_drawer.dart';
+import 'package:mind_archives_mobile/widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -31,9 +26,9 @@ class MyHomePage extends StatelessWidget {
 return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 37, 37, 37), // Set the background color to indigo
-        titleTextStyle: const TextStyle(color: Colors.white),
-        title: const Text('Shopping List'),
+        title: const Text('Shopping List', style: TextStyle(color: Colors.white)),
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -74,20 +69,6 @@ return Scaffold(
     );
   }
 }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-//       // This call to setState tells the Flutter framework that something has
-//       // changed in this State, which causes it to rerun the build method below
-//       // so that the display can reflect the updated values. If we changed
-//       // _counter without calling setState(), then the build method would not be
-//       // called again, and so nothing would appear to happen.
-//       _counter++;
-//     });
-//   }
 
   @override
   Widget build(BuildContext context) {
@@ -158,13 +139,19 @@ class ShopCard extends StatelessWidget {
       color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
-        onTap: () {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
-        },
+      onTap: () {
+        // Memunculkan SnackBar ketika diklik
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(SnackBar(
+              content: Text("Kamu telah menekan tombol ${item.name}!")));
+
+        // Navigate ke route yang sesuai (tergantung jenis tombol)
+        if (item.name == "Tambah Produk") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const ShopFormPage()));
+        }
+
+      },
         child: Container(
           // Container untuk menyimpan Icon dan Text
           padding: const EdgeInsets.all(8),
