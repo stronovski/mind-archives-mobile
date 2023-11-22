@@ -1,5 +1,40 @@
 # mind_archives_mobile
 
+## Tugas 9
+note: deployment masih belum bisa dijalankan... T___T
+### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+JSON data dapat diambil tanpa membuat suatu model sebelumnya, terutama ketika data hanya diambil dari API atau dari database. Hal ini biasa disebut sebagai parsing dynamic JSON di Flutter. Jika struktur data JSON diketahui dan cukup straightforward, maka tidak perlu menggunakan model tertentu untuk mengambil data agar dapat menjadi lebih fleksibel. Akan tetapi, jika struktur data JSON kompleks, hierarkis, dan memiliki jumlah yang besar, maka model dapat membantu untuk mengorganisasikan dan memanipulasi data secara lebih efektif.
+
+### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+Agar seluruh komponen memiliki logic dan behavior ketika membuat HTTP request yang menggunakan cookies, maka penggunaan instance CookieRequuest yang sama untuk seluruh bagian di aplikasi perlu dilakukan agar dapat menjaga konsistensi dan efisiensi dari pengendalian dan manajemen cookies dari berbagai bagian berbeda dari suatu app. Selain itu, dengan membagikan CookieRequest, maka berbagai komponen di dalam aplikasi dapat mengakses informasi-informasi relevan yang telah disimpan di dalam cookies.
+
+### Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+Pertama-tama, buat sebuah class Model untuk merepresentasikan data yang diambil dari JSON dengan menggunakan field yang sesuai dengan keys di dalam data JSON. Setelah itu, lakukan fetch data JSON untuk mengambil data yang ingin diambil. Lakukan parsing untuk mengconvert data menjadi format yang appropriate di dalam dart. Setelah itu, lakukan display data di flutter agar dapat ditampilkan di dalam aplikasi :3
+
+### Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+Setelah pengguna memasukkan informasi akun seperti username dan password dalam aplikasi flutter, maka data akan dikirim ke server Django dengan menggunakan permintaan HTTP. Pada umumnya, permintaan HTTP yang digunakan di dalam konteks ini menggunakan metode POST untuk menjaga keamanan. Setelah itu, dilakukan autentikasi untuk mengecek apakah data yang dimasukkan oleh pengguna sudah sesuai dengan data yang ada di dalam sistem atau tidak. Setelah itu, jika autentikasi berhasil, maka pengguna dapat melakukan navigasi ke halaman main dan mengakses berbagai informasi yang relevan dengan pengguna sebelumnya.
+
+### Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+- Scaffold: kerangka dasar dari aplikasi flutter yang dapat menyediakan struktur umum untuk aplikasi.
+- AppBar: widget yang berfungsi sebagai header aplikasi untuk menampilkan judul ataupun ikon di halaman atas layar.
+- LeftDrawer: widget yang telah dikustomisasi sebagai wadah untuk meletakkan isi-isi item menu dan juga tautan ke halaman lain.
+- Form: widget yang berfungsi untuk mengelola formulir dan melakukan validasi input
+- TextFormField: widget yang berfungsi untuk menjadi wadah interaksi pengguna untuk memasukkan teks ke dalam field yang telah tersedia, sehingga nantinya input yang diberikan oleh pengguna dapat diproses.
+- ElevatedButton: merupakan button yang  tampil "terangkat" di atas permukaan layar yang dapat digunakan sebagai trigger untuk memproses berbagai tindakan ketika ditekan.
+- Align: merupakan widget yang digunakan untuk mengatur posisi child di dalam parent widget.
+- Padding: Layout widget yang digunakan untuk mengatur jarak dalam widget
+- Column: Layout widget yang digunakan untuk mengatur widget secara vertikal
+- Center: Layout widget yang digunakan untuk membuat suatu elemen berada di tengah-tengah layar.
+- Material: Widget yang digunakan untuk mengatur warna latar belakang.
+- SnackBar: Merupakan widget yang berfungsi untuk menampilkan suatu pesan setelah widget diklik.
+- Inkwell: Merupakan widget yang berfungsi untuk membuat suatu area responsif terhadap sentuhan pengguna.
+- Navigator: widget yang digunakan untuk mengelola rute di dalam aplikasi flutter.
+- BuildContext: Digunakan untuk memangun hierarki antara widget-widget dan memberikan konteks untuk navigasi, menampilkan pesan, dan lainnya
+- GlobalKey: merupakan key yang memiliki sifat unik di sepanjang widget tree dan digunakan untuk mengidentifikasi dan berinteraksi dengan widget dari luar method build itu sendiri, seperti mengakses state dari sebuah widget ataupun men-trigger method dari widget.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+Pertama-tama, lakukan setup autentikasi pada aplikasi Django yang telah dibuat sebelumnya dengan menambahkan app baru dan juga menambahkan beberapa dependensi, method, dan juga routing baru. Setelah itu, lakukan integrasi sistem autentikasi pada flutter. Buat custom model dengan mengambil data yang sebelumnya ada di dalam aplikasi web dan melakukan parsing data tersebut ke dalam dart. Terapkan fetch data dari Django agar data dapat ditampilkan ke dalam Flutter, kemudian lakukan integrasi form Flutter dengan service Django. Buat implementasi fitur logout dengan menambahkan method ke dalam views.py authentication di dalam Django app dan juga lakukan routing. Setelah itu, ubah beberapa bagian di dalam proyek Flutter agar dapat mengimplementasikan cookie dan juga menghandle logout. Setelah itu, aplikasi pun selesai dibuat.
+
 ## Tugas 8
 
 ### Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
